@@ -15,12 +15,11 @@ const deleteTodo = (id) => {
   return { type: DELETE_TODO, id };
 }
 const reducer = (state = [], action) => {
-  console.log(action);
   switch (action.type) {
     case ADD_TODO:
       return [{ text: action.text, id: action.id }, ...state];
     case DELETE_TODO:
-      return [];
+      return state.filter(todo => todo.id !== action.id);
     default:
       return state;
   }
@@ -31,7 +30,7 @@ const store = createStore(reducer);
 store.subscribe(() => console.log(store.getState()))
 
 const dispatchDeleteTodo = (e) => {
-  const id = e.target.parentNode.id;
+  const id = parseInt(e.target.parentNode.id);
   store.dispatch(deleteTodo(id));
 }
 const paintTodos = () => {
