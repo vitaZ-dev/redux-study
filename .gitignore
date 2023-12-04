@@ -22,5 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-lecture.txt
+lecture_vanilla.txt
+lecture_react.txt
 customHook.txt
