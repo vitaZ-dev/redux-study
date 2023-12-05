@@ -7,7 +7,7 @@ const addTodo = text => {
   return { type: ADD, text }
 }
 const deleteTodo = id => {
-  return { type: DELETE, id }
+  return { type: DELETE, id: parseInt(id) }
 }
 
 const reducer = (state = [], action) => {

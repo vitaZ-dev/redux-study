@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { actionCreators } from "../store";
+import TodoItem from '../components/TodoItem';
 
 const Home = ({ todos, addTodo }) => {
   const [text, setText] = useState('');;
@@ -18,7 +19,7 @@ const Home = ({ todos, addTodo }) => {
         <button>add</button>
       </form>
       <ul>
-        {JSON.stringify(todos)}
+        {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
       </ul>
     </>
   );
