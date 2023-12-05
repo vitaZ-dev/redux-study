@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
 
-const Home = () => {
+const Home = ({ todos }) => {
   const [text, setText] = useState('');;
   const onChange = (e) => setText(e.target.value);
   const onSubmit = (e) => {
@@ -14,9 +15,16 @@ const Home = () => {
         <input type="text" value={text} onChange={onChange} />
         <button>add</button>
       </form>
-      <ul></ul>
+      <ul>
+        {JSON.stringify(todos)}
+      </ul>
     </>
   );
 }
 
-export default Home;
+function mapStateToProps(state, ownProps) {
+  // store로부터 state를 가져다준다 = mapStateToProps
+  // console.log(state, ownProps);
+  return { todos: state };
+}
+export default connect(mapStateToProps)(Home);
